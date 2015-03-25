@@ -1,0 +1,136 @@
+body {
+  background: #fff;
+  border: none;
+  color: #000;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 { 
+  font-family: arial, sans-serif;
+  font-size: 20px;
+  border-bottom: solid 5px #000;
+  width: 500px
+  margin: 20px 20px 20px 20px;
+}
+
+#main { 
+  font-family: 'Garamond', Verdana, sans-serif;
+  margin: 9px 0px 0px 210px;
+  width: 600px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 50px;
+}
+
+#footer { 
+  margin: 100px 0px 0px 0px;
+  padding: 0px;
+  border-top: solid 1px #000;
+  font-size: 9px;
+}
+
+a { 
+  text-decoration: none;
+  color:#fff;
+}
+a:visited {
+  text-decoration: none;
+  color:#fff;
+}
+
+#menu {
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  background: #999999;
+  border: solid 1px #000;
+  position: absolute;
+  left: 5px;
+  top: 59px;
+  width: 200px;
+  font-size: 75%;
+  padding-bottom: 1px;
+}
+
+#menu h2 {
+  color: #fff;
+  background: #000;
+  font-size: 120%;
+  font-weight: bold;
+  margin:0;
+  padding: 3px 0px 1px 1px;
+}
+
+#menu h3 {
+  color: #fff;
+  background: #444444;
+  font-size: 100%;
+  padding-left: 1em;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+
+#main h2 {
+  color: #000;
+  background: #fff;
+  font-size: 15px;
+}
+
+#main p { 
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  font-size: 13px;
+}
+
+#main ul li {
+  font-family: 'Lucida Sans Unicode', Verdana, sans-serif;
+  font-size: 13px;
+}
+
+#main ul li a {
+  color: #00a;
+  text-decoration: underline;
+}
+
+#main ul li a:visited { 
+  color: #a0a;
+  text-decoration: underline;
+}
+
+#menu ul {
+  color: #fff;
+  list-style-type: none;
+  margin-top: 1px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-left: 2px;
+  padding-right: 0px;
+}
+
+#menu ul li {
+  margin-top: 3px;
+  margin-left: 10px;
+}
+
+#menu ul li a {
+  display: block;
+  /*text-align: center;*/
+  text-decoration: none;
+  color: #fff;
+  background: #bbb;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#menu ul li a:hover {
+  display: block;
+  background: #a5a5a5;
+  border-right: 1px solid #a5a5a5;
+  border-bottom: 1px solid #a5a5a5;
+}
+
+#menu ul li a:visited {
+}
