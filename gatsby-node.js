@@ -1,17 +1,21 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
-exports.onCreateNode = ({ node, getNode, actions: { createNodeField } }) => {
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({ node, getNode, basePath: 'pages' });
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages/markdown` });
     createNodeField({ node, name: 'slug', value: slug });
   }
 };
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        sort: { fields: [frontmatter___priority], order: ASC }
+      ) {
         edges {
           node {
             fields {
@@ -26,10 +30,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve('./src/templates/page.js'),
+      component: path.resolve('./src/templates/page.jsx'),
       context: {
         slug: node.fields.slug,
       },
     });
   });
+
+  console.log(JSON.stringify(result, null, 4));
 };

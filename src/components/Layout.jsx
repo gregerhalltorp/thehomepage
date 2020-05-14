@@ -54,7 +54,9 @@ export default ({ children, location }) => {
             title
           }
         }
-        allMarkdownRemark {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___priority], order: ASC }
+        ) {
           totalCount
           edges {
             node {
