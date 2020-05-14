@@ -16,6 +16,7 @@
     "start": "yarn develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "deploy": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRTIBUTION --paths \"/*\"",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
@@ -23,10 +24,12 @@
     "@material-ui/styles": "^4.9.14",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.21.29",
+    "gatsby-plugin-canonical-urls": "^2.3.1",
     "gatsby-plugin-manifest": "^2.4.3",
     "gatsby-plugin-material-ui": "^2.1.8",
     "gatsby-plugin-offline": "^3.2.2",
     "gatsby-plugin-react-helmet": "^3.3.1",
+    "gatsby-plugin-s3": "^0.3.3",
     "gatsby-plugin-styled-components": "^3.3.1",
     "gatsby-source-filesystem": "^2.3.3",
     "gatsby-transformer-remark": "^2.8.8",

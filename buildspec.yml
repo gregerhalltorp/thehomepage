@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    runtime-versons:
+      nodejs: 12
+  pre_build:
+    commands:
+      - 'yarn --frozen-lockfile --production'
+  build:
+    commands:
+      - 'yarn build'
+  post_build:
+    commands:
+      - yarn deploy
+artifacts:
+  base-directory: public
+  files:
+    - '**/*'
+  discard-paths: no
+cache:
+  paths:
+    - '.cache/*'
+    - 'public/*'
