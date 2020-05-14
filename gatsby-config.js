@@ -1,6 +1,10 @@
 const targetAddress = new URL(
-  process.env.TARGET_ADDRESS || 'http://www.gregerhalltorp.local'
+  process.env.TARGET_ADDRESS || 'https://gregerhalltorp.net'
 );
+
+console.log('TARGET_ADDRESS', process.env.TARGET_ADDRESS);
+console.log('TARGET_BUCKET', process.env.TARGET_BUCKET);
+console.log('AWS_REGION', process.env.AWS_REGION)
 
 module.exports = {
   siteMetadata: {

@@ -17,6 +17,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gatsby-plugin-s3 deploy --yes && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION --paths \"/*\"",
+    "deploy2": "TARGET_BUCKET=gregerhalltorp.net gatsby-plugin-s3 deploy --yes",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
