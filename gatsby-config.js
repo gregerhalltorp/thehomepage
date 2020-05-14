@@ -3,7 +3,7 @@ const targetAddress = new URL(
 );
 
 console.log('TARGET_ADDRESS', process.env.TARGET_ADDRESS);
-console.log('TARGET_BUCKET', process.env.TARGET_BUCKET);
+console.log('TARGET_BUCKET_NAME', process.env.TARGET_BUCKET_NAME);
 console.log('AWS_REGION', process.env.AWS_REGION)
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-s3',
       options: {
-        bucketName: process.env.TARGET_BUCKET || 'fejk-bucket',
+        bucketName: process.env.TARGET_BUCKET_NAME || 'fejk-bucket',
         region: process.env.AWS_REGION,
         protocol: targetAddress.protocol.slice(0, -1),
         hostname: targetAddress.hostname,
