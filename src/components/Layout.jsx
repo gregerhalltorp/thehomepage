@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(),
   },
   mainContainer: {
-    marginLeft: '5%',
+    // marginLeft: '5%',
     backgroundColor: '#f5f5f5',
   },
   footer: {
@@ -132,7 +132,6 @@ export default ({ children, location }) => {
         </AppBar>
         <Container
           maxWidth="md"
-          disableGutters
           className={classes.mainContainer}
         >
           <Typography variant="body1" component="section">
