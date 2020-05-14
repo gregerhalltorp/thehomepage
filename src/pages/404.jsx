@@ -18,6 +18,9 @@ export default () => {
       <Typography variant="h1" color="error" className={classes.errorBanner}>
         NOT FOUND
       </Typography>
+      <Typography variant="body1">
+        Nothing to see here
+      </Typography>
     </Layout>
   );
 };
