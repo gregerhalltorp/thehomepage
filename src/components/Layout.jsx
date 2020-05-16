@@ -3,13 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 
-import {
-  AppBar,
-  Container,
-  CssBaseLine,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import { AppBar, Container, Toolbar, Typography } from '@material-ui/core';
+import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 import Copyright from './Copyright';
