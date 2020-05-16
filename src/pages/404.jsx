@@ -1,5 +1,5 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Layout from '../components/Layout';
@@ -18,9 +18,7 @@ export default () => {
       <Typography variant="h1" color="error" className={classes.errorBanner}>
         NOT FOUND
       </Typography>
-      <Typography variant="body1">
-        Nothing to see here
-      </Typography>
+      <Typography variant="body1">Nothing to see here</Typography>
     </Layout>
   );
 };

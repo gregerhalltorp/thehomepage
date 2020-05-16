@@ -2,10 +2,6 @@ const targetAddress = new URL(
   process.env.TARGET_ADDRESS || 'https://gregerhalltorp.net'
 );
 
-console.log('TARGET_ADDRESS', process.env.TARGET_ADDRESS);
-console.log('TARGET_BUCKET_NAME', process.env.TARGET_BUCKET_NAME);
-console.log('AWS_REGION', process.env.AWS_REGION)
-
 module.exports = {
   siteMetadata: {
     title: 'Greger Hälltorp',
@@ -22,14 +18,14 @@ module.exports = {
     },
     'gatsby-transformer-remark',
     {
-      resolve: 'gatsby-plugin-material-ui',
+      resolve: `gatsby-plugin-material-ui`,
       options: {
         stylesProvider: {
           injectFirst: true,
         },
       },
     },
-    'gatsby-plugin-styled-components',
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-s3',
       options: {
@@ -47,5 +43,17 @@ module.exports = {
         siteUrl: targetAddress.href.slice(0, -1),
       },
     },
+    // {
+    //   resolve: 'gatsby-plugin-webpack-size',
+    //   options: {
+    //     development: true,
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+    //   options: {
+    //     devMode: true,
+    //   },
+    // },
   ],
 };

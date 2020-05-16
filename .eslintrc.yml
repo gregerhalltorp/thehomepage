@@ -1,3 +1,4 @@
+parser: babel-eslint
 extends:
   - airbnb
   - airbnb/hooks
@@ -5,6 +6,5 @@ extends:
 rules:
   react/jsx-props-no-spreading: off
   react/jsx-one-expression-per-line:
-    - error
-    - allow: literal
+    - off
   react/prop-types: off

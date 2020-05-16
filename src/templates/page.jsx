@@ -1,6 +1,6 @@
-import Paper from '@material-ui/core/Paper';
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Layout from '../components/Layout';
@@ -29,7 +29,7 @@ export default ({ data, location }) => {
   const classes = useStyles();
   const post = data.markdownRemark;
   return (
-    <Layout location={location}>
+    <Layout location={location} title={post?.frontmatter.title}>
       <Paper className={classes.mainPaper}>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Paper>

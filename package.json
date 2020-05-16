@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.14",
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.21.29",
@@ -32,6 +33,7 @@
     "gatsby-plugin-react-helmet": "^3.3.1",
     "gatsby-plugin-s3": "^0.3.3",
     "gatsby-plugin-styled-components": "^3.3.1",
+    "gatsby-plugin-webpack-size": "^1.0.0",
     "gatsby-source-filesystem": "^2.3.3",
     "gatsby-transformer-remark": "^2.8.8",
     "react": "^16.13.1",
@@ -40,6 +42,9 @@
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-imports": "^2.0.0",
+    "babel-preset-gatsby": "^0.4.2",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -47,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "2.5.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.9",
     "prettier": "^2.0.5"
   }
 }

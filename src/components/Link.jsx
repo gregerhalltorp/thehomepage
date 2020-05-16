@@ -1,4 +1,4 @@
-import MuiLink from '@material-ui/core/Link';
+import { Link as MuiLink } from '@material-ui/core';
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 

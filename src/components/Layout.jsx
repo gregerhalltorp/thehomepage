@@ -3,11 +3,13 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 
-import AppBar from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import CssBaseLine from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar,
+  Container,
+  CssBaseLine,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 import Copyright from './Copyright';
@@ -45,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // eslint-disable-next-line no-unused-vars
-export default ({ children, location }) => {
+export default ({ children, location, title }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -80,8 +82,7 @@ export default ({ children, location }) => {
       <GlobalStyle />
       <Helmet>
         <meta charSet="utf-8" />
-        <title>My Title</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <title>{`Greger Hälltorp${title ? ` - ${title}` : ''}`}</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -130,15 +131,16 @@ export default ({ children, location }) => {
             </nav>
           </Toolbar>
         </AppBar>
-        <Container
-          maxWidth="md"
-          className={classes.mainContainer}
-        >
+        <Container maxWidth="lg" className={classes.mainContainer}>
           <Typography variant="body1" component="section">
             {children}
           </Typography>
         </Container>
-        <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Container
+          maxWidth={false}
+          component="footer"
+          className={classes.footer}
+        >
           <Copyright />
         </Container>
       </ThemeProvider>
