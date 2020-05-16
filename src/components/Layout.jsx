@@ -3,13 +3,21 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 
-import { AppBar, Container, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  Avatar,
+  Container,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
 import Copyright from './Copyright';
 import Link from './Link';
 import globalTheme from '../styles/theme';
+
+import avatarImage from '../../files/images/profile.png';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,8 +29,13 @@ const useStyles = makeStyles((theme) => ({
   header: {
     marginBottom: theme.spacing(1.5),
   },
+  toolbarAvatar: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+  },
   toolbarTitle: {
     flexGrow: 1,
+    marginLeft: theme.spacing(1),
   },
   toolbarLink: {
     marginLeft: theme.spacing(),
@@ -94,6 +107,11 @@ export default ({ children, title }) => {
         <CssBaseLine />
         <AppBar position="static" color="primary" className={classes.header}>
           <Toolbar>
+            <Avatar
+              alt="Greger Hälltorp"
+              src={avatarImage}
+              className={classes.toolbarAvatar}
+            />
             <Typography
               variant="h5"
               color="inherit"
