@@ -5,7 +5,7 @@ phases:
       nodejs: 12
   pre_build:
     commands:
-      - 'yarn --frozen-lockfile --production'
+      - 'yarn --frozen-lockfile'
   build:
     commands:
       - 'yarn build'
