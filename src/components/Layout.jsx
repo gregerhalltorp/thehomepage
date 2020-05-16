@@ -41,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// eslint-disable-next-line no-unused-vars
-export default ({ children, location, title }) => {
+export default ({ children, title }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -122,6 +121,14 @@ export default ({ children, location, title }) => {
                 className={classes.toolbarLink}
               >
                 Stuff
+              </Link>
+              <Link
+                variant="button"
+                color="inherit"
+                to="/contact"
+                className={classes.toolbarLink}
+              >
+                Kontakt
               </Link>
             </nav>
           </Toolbar>

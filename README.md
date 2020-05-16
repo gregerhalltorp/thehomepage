@@ -2,8 +2,9 @@
 
 - [x] Deployment and pipeline
 - [x] Finish stuff page
-- [ ] Add contact page
+- [x] Add contact page
 - [ ] Avatar
+- [ ] Fix cards depending on screensize 
 - [ ] Faceshot
 - [ ] Carousel replacement
 - [ ] MUI components for html tags

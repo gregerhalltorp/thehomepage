@@ -1,20 +1,11 @@
 import React from 'react';
-import {
-  Avatar,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardHeader,
-  Grid,
-  Typography,
-} from '@material-ui/core';
+import { Avatar, Grid, Typography } from '@material-ui/core';
 import { PictureAsPdf as PdfIcon, Link as LinkIcon } from '@material-ui/icons';
-import styled from 'styled-components';
-import xjobb from '../../files/Xjobb.pdf';
-import padlock from '../../files/Padlock.pdf';
-// import CardActions from '@material-ui/core/CardActions';
 
 import Layout from '../components/Layout';
+import StuffCard from '../components/StuffCard';
+import xjobb from '../../files/Xjobb.pdf';
+import padlock from '../../files/Padlock.pdf';
 
 const PdfAvatar = () => (
   <Avatar>
@@ -27,26 +18,6 @@ const LinkAvatar = () => (
     <LinkIcon />
   </Avatar>
 );
-
-const StuffCard = ({ link, title, avatar, body }) => (
-  <Card>
-    <CardActionArea href={link} target="_blank" rel="noopener">
-      <CardHeader
-        title={<Typography variant="h6">{title}</Typography>}
-        avatar={avatar}
-      />
-      {body && (
-        <StyledCardContent>
-          <Typography variant="body2">{body}</Typography>
-        </StyledCardContent>
-      )}
-    </CardActionArea>
-  </Card>
-);
-
-const StyledCardContent = styled(CardContent)`
-  padding-top: 0;
-`;
 
 export default ({ location }) => {
   return (
