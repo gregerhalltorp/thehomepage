@@ -1,13 +1,14 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import Layout from '../components/Layout';
 import MainPaper from '../components/MainPaper';
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title
       }
@@ -16,11 +17,11 @@ export const query = graphql`
 `;
 
 export default ({ data, location }) => {
-  const post = data.markdownRemark;
+  const post = data.mdx;
   return (
     <Layout location={location} title={post?.frontmatter.title}>
       <MainPaper>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MDXRenderer>{post.body}</MDXRenderer>
       </MainPaper>
     </Layout>
   );

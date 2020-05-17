@@ -8,6 +8,7 @@ module.exports = {
   },
 
   plugins: [
+    'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -16,7 +17,12 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        extensions: ['.mdx', '.md'],
+      },
+    },
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {

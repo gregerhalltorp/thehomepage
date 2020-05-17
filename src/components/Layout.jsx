@@ -2,14 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
-
 import {
   AppBar,
   Avatar,
   Container,
   Toolbar,
   Typography,
+  Hidden,
+  BottomNavigation,
+  BottomNavigationAction,
 } from '@material-ui/core';
+import {
+  Home as HomeIcon,
+  Info as InfoIcon,
+  Description as DescriptionIcon,
+  ContactMail as ContactIcon,
+} from '@material-ui/icons';
 import CssBaseLine from '@material-ui/core/CssBaseline';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
@@ -44,6 +52,10 @@ const useStyles = makeStyles((theme) => ({
     // marginLeft: '5%',
     backgroundColor: '#f5f5f5',
   },
+  bottomAppBar: {
+    top: 'auto',
+    bottom: 0,
+  },
   footer: {
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
@@ -63,9 +75,7 @@ export default ({ children, title }) => {
             title
           }
         }
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___priority], order: ASC }
-        ) {
+        allMdx(sort: { fields: [frontmatter___priority], order: ASC }) {
           totalCount
           edges {
             node {
@@ -105,7 +115,7 @@ export default ({ children, title }) => {
       </Helmet>
       <ThemeProvider theme={globalTheme}>
         <CssBaseLine />
-        <AppBar position="static" color="primary" className={classes.header}>
+        <AppBar position="sticky" color="primary" className={classes.header}>
           <Toolbar>
             <Avatar
               alt="Greger Hälltorp"
@@ -120,38 +130,40 @@ export default ({ children, title }) => {
             >
               {data.site.siteMetadata.title}
             </Typography>
-            <nav>
-              {data.allMarkdownRemark.edges.map(({ node }) => (
+            <Hidden xsDown>
+              <nav>
+                {data.allMdx.edges.map(({ node }) => (
+                  <Link
+                    variant="button"
+                    color="inherit"
+                    to={node.fields.slug}
+                    className={classes.toolbarLink}
+                    key={node.id}
+                  >
+                    {node.frontmatter.title}
+                  </Link>
+                ))}
                 <Link
                   variant="button"
                   color="inherit"
-                  to={node.fields.slug}
+                  to="/stuff"
                   className={classes.toolbarLink}
-                  key={node.id}
                 >
-                  {node.frontmatter.title}
+                  Stuff
                 </Link>
-              ))}
-              <Link
-                variant="button"
-                color="inherit"
-                to="/stuff"
-                className={classes.toolbarLink}
-              >
-                Stuff
-              </Link>
-              <Link
-                variant="button"
-                color="inherit"
-                to="/contact"
-                className={classes.toolbarLink}
-              >
-                Kontakt
-              </Link>
-            </nav>
+                <Link
+                  variant="button"
+                  color="inherit"
+                  to="/contact"
+                  className={classes.toolbarLink}
+                >
+                  Kontakt
+                </Link>
+              </nav>
+            </Hidden>
           </Toolbar>
         </AppBar>
-        <Container maxWidth="lg" className={classes.mainContainer}>
+        <Container maxWidth="md" className={classes.mainContainer}>
           <Typography variant="body1" component="section">
             {children}
           </Typography>
@@ -163,6 +175,36 @@ export default ({ children, title }) => {
         >
           <Copyright />
         </Container>
+        <Hidden smUp>
+          <AppBar position="fixed" className={classes.bottomAppBar}>
+            <BottomNavigation showLabels>
+              <BottomNavigationAction
+                component={Link}
+                to="/"
+                label="Hem"
+                icon={<HomeIcon />}
+              />
+              <BottomNavigationAction
+                component={Link}
+                to="/about/"
+                label="Om"
+                icon={<InfoIcon />}
+              />
+              <BottomNavigationAction
+                component={Link}
+                to="/stuff"
+                label="Stuff"
+                icon={<DescriptionIcon />}
+              />
+              <BottomNavigationAction
+                component={Link}
+                to="/contact"
+                label="Kontakt"
+                icon={<ContactIcon />}
+              />
+            </BottomNavigation>
+          </AppBar>
+        </Hidden>
       </ThemeProvider>
     </>
   );
