@@ -23,7 +23,7 @@ export default ({ location }) => {
   return (
     <Layout location={location} title="Stuff">
       <Grid container spacing={1}>
-        <Grid item container xs={6} spacing={1} alignContent="flex-start">
+        <Grid item container md={6} sm={12} spacing={1} alignContent="flex-start">
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
               Code stuff
@@ -45,7 +45,7 @@ export default ({ location }) => {
             />
           </Grid>
         </Grid>
-        <Grid item container xs={6} spacing={1} alignContent="flex-start">
+        <Grid item container md={6} sm={12} spacing={1} alignContent="flex-start">
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
               Sciency stuff

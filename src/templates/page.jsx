@@ -17,11 +17,11 @@ export const query = graphql`
 `;
 
 export default ({ data, location }) => {
-  const post = data.mdx;
+  const page = data.mdx;
   return (
-    <Layout location={location} title={post?.frontmatter.title}>
+    <Layout location={location} title={page?.frontmatter.title}>
       <MainPaper>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXRenderer>{page.body}</MDXRenderer>
       </MainPaper>
     </Layout>
   );

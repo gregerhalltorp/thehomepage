@@ -19,8 +19,8 @@ import MainPaper from '../components/MainPaper';
 
 const ListItemLink = (props) => <ListItem button component="a" {...props} />;
 
-export default () => (
-  <Layout title="Kontakt">
+export default ({ location }) => (
+  <Layout location={location} title="Kontakt">
     <MainPaper>
       <Typography variant="h4">Kontaktinfo</Typography>
       <Box mt={2}>

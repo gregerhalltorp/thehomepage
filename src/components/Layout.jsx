@@ -27,6 +27,11 @@ import globalTheme from '../styles/theme';
 
 import avatarImage from '../../files/images/profile.png';
 
+const icons = {
+  Hem: HomeIcon,
+  Om: InfoIcon,
+};
+
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #f5f5f5;
@@ -45,16 +50,35 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     marginLeft: theme.spacing(1),
   },
-  toolbarLink: {
-    marginLeft: theme.spacing(),
-  },
   mainContainer: {
-    // marginLeft: '5%',
     backgroundColor: '#f5f5f5',
   },
   bottomAppBar: {
     top: 'auto',
     bottom: 0,
+  },
+  navigation: {
+    display: 'flex',
+    alignSelf: 'stretch',
+    alignItems: 'stretch',
+  },
+  navigation__list: {
+    listStyleType: 'none',
+    margin: '0px',
+    display: 'flex',
+  },
+  navigation__item: {
+    display: 'flex',
+    alignItems: 'stretch',
+  },
+  navigation__link: {
+    padding: `0 ${theme.spacing(1)}px ${theme.spacing(1)}px`,
+    display: 'flex',
+    alignItems: 'flex-end',
+    borderBottom: 'solid #1976D4',
+  },
+  'navigation__link--selected': {
+    borderBottom: 'solid white',
   },
   footer: {
     paddingTop: theme.spacing(3),
@@ -66,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ children, title }) => {
+export default ({ children, title, location }) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -130,35 +154,45 @@ export default ({ children, title }) => {
             >
               {data.site.siteMetadata.title}
             </Typography>
-            <Hidden xsDown>
-              <nav>
-                {data.allMdx.edges.map(({ node }) => (
-                  <Link
-                    variant="button"
-                    color="inherit"
-                    to={node.fields.slug}
-                    className={classes.toolbarLink}
-                    key={node.id}
-                  >
-                    {node.frontmatter.title}
-                  </Link>
-                ))}
-                <Link
-                  variant="button"
-                  color="inherit"
-                  to="/stuff"
-                  className={classes.toolbarLink}
-                >
-                  Stuff
-                </Link>
-                <Link
-                  variant="button"
-                  color="inherit"
-                  to="/contact"
-                  className={classes.toolbarLink}
-                >
-                  Kontakt
-                </Link>
+            <Hidden xsDown implementation="css" className={classes.navigation}>
+              <nav className={classes.navigation}>
+                <ul className={classes.navigation__list}>
+                  {data.allMdx.edges.map(({ node }) => (
+                    <li className={classes.navigation__item} key={node.id}>
+                      <Link
+                        variant="button"
+                        color="inherit"
+                        to={node.fields.slug}
+                        className={classes.navigation__link}
+                        activeClassName={classes['navigation__link--selected']}
+                      >
+                        {node.frontmatter.title}
+                      </Link>
+                    </li>
+                  ))}
+                  <li className={classes.navigation__item}>
+                    <Link
+                      variant="button"
+                      color="inherit"
+                      to="/stuff"
+                      className={classes.navigation__link}
+                      activeClassName={classes['navigation__link--selected']}
+                    >
+                      Stuff
+                    </Link>
+                  </li>
+                  <li className={classes.navigation__item}>
+                    <Link
+                      variant="button"
+                      color="inherit"
+                      to="/contact"
+                      className={classes.navigation__link}
+                      activeClassName={classes['navigation__link--selected']}
+                    >
+                      Kontakt
+                    </Link>
+                  </li>
+                </ul>
               </nav>
             </Hidden>
           </Toolbar>
@@ -175,32 +209,39 @@ export default ({ children, title }) => {
         >
           <Copyright />
         </Container>
-        <Hidden smUp>
-          <AppBar position="fixed" className={classes.bottomAppBar}>
-            <BottomNavigation showLabels>
+        <Hidden smUp implementation="css">
+          <AppBar
+            position="fixed"
+            className={classes.bottomAppBar}
+            component="footer"
+          >
+            <BottomNavigation showLabels value={location.pathname}>
+              {data.allMdx.edges.map(({ node }) => {
+                const Icon = icons[node.frontmatter.title];
+                return (
+                  <BottomNavigationAction
+                    key={node.id}
+                    component={Link}
+                    to={node.fields.slug}
+                    label={node.frontmatter.title}
+                    icon={<Icon />}
+                    value={node.fields.slug}
+                  />
+                );
+              })}
               <BottomNavigationAction
                 component={Link}
-                to="/"
-                label="Hem"
-                icon={<HomeIcon />}
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/about/"
-                label="Om"
-                icon={<InfoIcon />}
-              />
-              <BottomNavigationAction
-                component={Link}
-                to="/stuff"
+                to="/stuff/"
                 label="Stuff"
                 icon={<DescriptionIcon />}
+                value="/stuff/"
               />
               <BottomNavigationAction
                 component={Link}
-                to="/contact"
+                to="/contact/"
                 label="Kontakt"
                 icon={<ContactIcon />}
+                value="/contact/"
               />
             </BottomNavigation>
           </AppBar>

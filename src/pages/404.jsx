@@ -5,11 +5,11 @@ import Layout from '../components/Layout';
 
 export default () => {
   return (
-    <Layout>
+    <>
       <Typography variant="h1" color="error" align="center">
         NOT FOUND
       </Typography>
       <Typography variant="body1">Nothing to see here</Typography>
-    </Layout>
+    </>
   );
 };
