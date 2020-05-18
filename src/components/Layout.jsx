@@ -38,57 +38,65 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const useStyles = makeStyles((theme) => ({
-  header: {
-    marginBottom: theme.spacing(1.5),
-  },
-  toolbarAvatar: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-  },
-  toolbarTitle: {
-    flexGrow: 1,
-    marginLeft: theme.spacing(1),
-  },
-  mainContainer: {
-    backgroundColor: '#f5f5f5',
-  },
-  bottomAppBar: {
-    top: 'auto',
-    bottom: 0,
-  },
-  navigation: {
-    display: 'flex',
-    alignSelf: 'stretch',
-    alignItems: 'stretch',
-  },
-  navigation__list: {
-    listStyleType: 'none',
-    margin: '0px',
-    display: 'flex',
-  },
-  navigation__item: {
-    display: 'flex',
-    alignItems: 'stretch',
-  },
-  navigation__link: {
-    padding: `0 ${theme.spacing(1)}px ${theme.spacing(1)}px`,
-    display: 'flex',
-    alignItems: 'flex-end',
-    borderBottom: 'solid #1976D4',
-  },
-  'navigation__link--selected': {
-    borderBottom: 'solid white',
-  },
-  footer: {
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(5),
-      paddingBottom: theme.spacing(6),
+const useStyles = makeStyles((theme) => {
+  // console.log(theme);
+  return {
+    header: {
+      marginBottom: theme.spacing(1.5),
     },
-  },
-}));
+    toolbarAvatar: {
+      width: theme.spacing(10),
+      height: theme.spacing(10),
+    },
+    toolbarTitle: {
+      flexGrow: 1,
+      marginLeft: theme.spacing(1),
+    },
+    mainContainer: {
+      backgroundColor: '#f5f5f5',
+    },
+    bottomAppBar: {
+      top: 'auto',
+      bottom: 0,
+    },
+    navigation: {
+      display: 'flex',
+      alignSelf: 'stretch',
+      alignItems: 'stretch',
+    },
+    [`${theme.breakpoints.down('xs')}`]: {
+      navigation: {
+        display: 'none',
+      },
+    },
+    navigation__list: {
+      listStyleType: 'none',
+      margin: '0px',
+      display: 'flex',
+    },
+    navigation__item: {
+      display: 'flex',
+      alignItems: 'stretch',
+    },
+    navigation__link: {
+      padding: `0 ${theme.spacing(1)}px ${theme.spacing(1)}px`,
+      display: 'flex',
+      alignItems: 'flex-end',
+      borderBottom: 'solid #1976D4',
+    },
+    'navigation__link--selected': {
+      borderBottom: 'solid white',
+    },
+    footer: {
+      paddingTop: theme.spacing(3),
+      paddingBottom: theme.spacing(3),
+      [theme.breakpoints.up('sm')]: {
+        paddingTop: theme.spacing(5),
+        paddingBottom: theme.spacing(6),
+      },
+    },
+  };
+});
 
 export default ({ children, title, location }) => {
   const data = useStaticQuery(
@@ -154,7 +162,7 @@ export default ({ children, title, location }) => {
             >
               {data.site.siteMetadata.title}
             </Typography>
-            <Hidden xsDown implementation="css" className={classes.navigation}>
+            <div className={classes.navigation}>
               <nav className={classes.navigation}>
                 <ul className={classes.navigation__list}>
                   {data.allMdx.edges.map(({ node }) => (
@@ -194,7 +202,7 @@ export default ({ children, title, location }) => {
                   </li>
                 </ul>
               </nav>
-            </Hidden>
+            </div>
           </Toolbar>
         </AppBar>
         <Container maxWidth="md" className={classes.mainContainer}>
