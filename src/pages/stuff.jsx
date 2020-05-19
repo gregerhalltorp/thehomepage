@@ -1,29 +1,52 @@
 import React from 'react';
 import { Avatar, Grid, Typography } from '@material-ui/core';
-import { PictureAsPdf as PdfIcon, Link as LinkIcon } from '@material-ui/icons';
+import {
+  PictureAsPdf as PdfIcon,
+  Link as LinkIcon,
+  GitHub as GitHubIcon,
+} from '@material-ui/icons';
+import { styled } from '@material-ui/core/styles';
 
 import Layout from '../components/Layout';
 import StuffCard from '../components/StuffCard';
 import xjobb from '../../files/Xjobb.pdf';
 import padlock from '../../files/Padlock.pdf';
 
+const SmallAvatar = styled(Avatar)(({ theme }) => ({
+  width: theme.spacing(4),
+  height: theme.spacing(4),
+}));
+
+const GitHubAvatar = () => (
+  <SmallAvatar>
+    <GitHubIcon fontSize="small" />
+  </SmallAvatar>
+);
+
 const PdfAvatar = () => (
-  <Avatar>
-    <PdfIcon />
-  </Avatar>
+  <SmallAvatar>
+    <PdfIcon fontSize="small" />
+  </SmallAvatar>
 );
 
 const LinkAvatar = () => (
-  <Avatar>
-    <LinkIcon />
-  </Avatar>
+  <SmallAvatar>
+    <LinkIcon fontSize="small" />
+  </SmallAvatar>
 );
 
 export default ({ location }) => {
   return (
     <Layout location={location} title="Stuff">
       <Grid container spacing={1}>
-        <Grid item container md={6} sm={12} spacing={1} alignContent="flex-start">
+        <Grid
+          item
+          container
+          md={6}
+          sm={12}
+          spacing={1}
+          alignContent="flex-start"
+        >
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
               Code stuff
@@ -33,26 +56,33 @@ export default ({ location }) => {
             <StuffCard
               link="https://github.com/gregerhalltorp"
               title="GitHub"
-              avatar={<LinkAvatar />}
+              Avatar={GitHubAvatar}
             />
           </Grid>
           <Grid item xs={12}>
             <StuffCard
               link="https://gist.github.com/gregerhalltorp"
               title="Gists"
-              avatar={<LinkAvatar />}
+              Avatar={GitHubAvatar}
               body="Gist code snippets"
             />
           </Grid>
         </Grid>
-        <Grid item container md={6} sm={12} spacing={1} alignContent="flex-start">
+        <Grid
+          item
+          container
+          md={6}
+          sm={12}
+          spacing={1}
+          alignContent="flex-start"
+        >
           <Grid item xs={12}>
             <Typography variant="h5" align="center">
               Sciency stuff
             </Typography>
           </Grid>
-          {/* eslint-disable react/jsx-wrap-multilines */}
           <Grid item xs={12}>
+            {/* eslint-disable react/jsx-wrap-multilines */}
             <StuffCard
               link={xjobb}
               title={
@@ -60,7 +90,7 @@ export default ({ location }) => {
                   A phylogenomic study of <em>Francisella tularensis</em>
                 </>
               }
-              avatar={<PdfAvatar />}
+              Avatar={PdfAvatar}
               body="Mitt examensarbete för civilingenjörsutbildningen"
             />
           </Grid>
@@ -68,7 +98,7 @@ export default ({ location }) => {
             <StuffCard
               link={padlock}
               title="Computer-aided Construction of Padlock Probes"
-              avatar={<PdfAvatar />}
+              Avatar={PdfAvatar}
               body={
                 <>
                   Rapport från kursen{' '}
@@ -87,7 +117,7 @@ export default ({ location }) => {
                   tularemia
                 </>
               }
-              avatar={<LinkAvatar />}
+              Avatar={LinkAvatar}
               body="Artikeln där mitt exjobb ingick"
             />
           </Grid>

@@ -33,13 +33,16 @@ const icons = {
 };
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    min-width: 300px;
+  }
   body {
     background-color: #f5f5f5;
+    min-width: 300px;
   }
 `;
 
 const useStyles = makeStyles((theme) => {
-  // console.log(theme);
   return {
     header: {
       marginBottom: theme.spacing(1.5),
@@ -64,11 +67,6 @@ const useStyles = makeStyles((theme) => {
       alignSelf: 'stretch',
       alignItems: 'stretch',
     },
-    [`${theme.breakpoints.down('xs')}`]: {
-      navigation: {
-        display: 'none',
-      },
-    },
     navigation__list: {
       listStyleType: 'none',
       margin: '0px',
@@ -87,12 +85,27 @@ const useStyles = makeStyles((theme) => {
     'navigation__link--selected': {
       borderBottom: 'solid white',
     },
-    footer: {
+    'page-footer': {
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(3),
       [theme.breakpoints.up('sm')]: {
         paddingTop: theme.spacing(5),
         paddingBottom: theme.spacing(6),
+      },
+    },
+    [`${theme.breakpoints.down('xs')}`]: {
+      navigation: {
+        display: 'none',
+      },
+    },
+    [`${theme.breakpoints.up('sm')}`]: {
+      'bottom-navigation': {
+        display: 'none',
+      },
+    },
+    [`${theme.breakpoints.up('md')}`]: {
+      mainContainer: {
+        maxWidth: `${theme.breakpoints.width('md')}px`,
       },
     },
   };
@@ -205,7 +218,7 @@ export default ({ children, title, location }) => {
             </div>
           </Toolbar>
         </AppBar>
-        <Container maxWidth="md" className={classes.mainContainer}>
+        <Container maxWidth="sm" className={classes.mainContainer}>
           <Typography variant="body1" component="section">
             {children}
           </Typography>
@@ -213,11 +226,11 @@ export default ({ children, title, location }) => {
         <Container
           maxWidth={false}
           component="footer"
-          className={classes.footer}
+          className={classes['page-footer']}
         >
           <Copyright />
         </Container>
-        <Hidden smUp implementation="css">
+        <div className={classes['bottom-navigation']}>
           <AppBar
             position="fixed"
             className={classes.bottomAppBar}
@@ -253,7 +266,7 @@ export default ({ children, title, location }) => {
               />
             </BottomNavigation>
           </AppBar>
-        </Hidden>
+        </div>
       </ThemeProvider>
     </>
   );
