@@ -195,7 +195,7 @@ export default ({ children, title, location }) => {
                     <Link
                       variant="button"
                       color="inherit"
-                      to="/stuff"
+                      to="/stuff/"
                       className={classes.navigation__link}
                       activeClassName={classes['navigation__link--selected']}
                     >
@@ -206,7 +206,7 @@ export default ({ children, title, location }) => {
                     <Link
                       variant="button"
                       color="inherit"
-                      to="/contact"
+                      to="/contact/"
                       className={classes.navigation__link}
                       activeClassName={classes['navigation__link--selected']}
                     >

@@ -10,7 +10,7 @@
   - [x] Reduce icon size and font size depending on screen size
 - [x] Selected page marked
 - [x] Hide navigations depending on width
-- [ ] Fix selected link in top bar for stuff + contact in 
+- [x] Fix selected link in top bar for stuff + contact 
 - [ ] mdx
   - [x] Switch plugin
   - [ ] MUI components for html tags
