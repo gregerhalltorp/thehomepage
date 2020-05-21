@@ -18,7 +18,7 @@ export const query = graphql`
         title
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800 maxHeight:450 cropFocus:NORTH) {
+            fluid(maxWidth: 800, maxHeight: 450, cropFocus: NORTH) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -62,12 +62,13 @@ const comps = {
 
 export default ({ data, location }) => {
   const page = data.mdx;
-  const featuredImgFluid = page.frontmatter.featuredImage.childImageSharp.fluid;
+  const featuredImgFluid =
+    page.frontmatter?.featuredImage?.childImageSharp?.fluid;
 
   return (
     <Layout location={location} title={page?.frontmatter.title}>
       <MainPaper>
-        <Img fluid={featuredImgFluid} />
+        {featuredImgFluid && <Img fluid={featuredImgFluid} />}
         <MDXProvider components={comps}>
           <MDXRenderer>{page.body}</MDXRenderer>
         </MDXProvider>
