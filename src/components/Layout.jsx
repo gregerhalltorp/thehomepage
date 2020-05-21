@@ -8,7 +8,6 @@ import {
   Container,
   Toolbar,
   Typography,
-  Hidden,
   BottomNavigation,
   BottomNavigationAction,
 } from '@material-ui/core';

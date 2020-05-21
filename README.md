@@ -14,6 +14,12 @@
 - [ ] mdx
   - [x] Switch plugin
   - [ ] MUI components for html tags
+    - [X] Headers
+    - [X] Links
+    - [ ] ...
+  - [ ] Migrate stuff page to MDX
+  - [ ] Migrate contact page to MDX
+- [ ] Hover effect on top nav (should top nav be tabs?)
 - [ ] Image handling (eg. profile picture reloaded with 200 on every link)
 - [ ] Faceshot
 - [ ] Carousel replacement

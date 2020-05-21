@@ -3,9 +3,9 @@ title: "Om"
 priority: 1
 ---
 
-Om mig
-Fyrabarnsfar! Make, vän.
-Utvecklare, musikälskare, hobbycyklist, fotografientusiast
+# Om mig
+## Fyrabarnsfar! Make, vän.
+### Utvecklare, musikälskare, hobbycyklist, fotografientusiast
 
 
 Jag bor med min familj i Sollentuna och arbetar i Stockholm.
