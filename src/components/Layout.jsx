@@ -80,6 +80,10 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       alignItems: 'flex-end',
       borderBottom: 'solid #1976D4',
+      '&:hover': {
+        textDecoration: 'none',
+        backgroundColor: '#115090',
+      },
     },
     'navigation__link--selected': {
       borderBottom: 'solid white',
