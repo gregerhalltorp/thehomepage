@@ -1,5 +1,6 @@
 ---
 title: "Om"
+featuredImage: '../../assets/images/headshot.jpg'
 priority: 1
 ---
 

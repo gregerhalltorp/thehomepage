@@ -9,8 +9,8 @@ import { styled } from '@material-ui/core/styles';
 
 import Layout from '../components/Layout';
 import StuffCard from '../components/StuffCard';
-import xjobb from '../../files/Xjobb.pdf';
-import padlock from '../../files/Padlock.pdf';
+import xjobb from '../assets/files/Xjobb.pdf';
+import padlock from '../assets/files/Padlock.pdf';
 
 const SmallAvatar = styled(Avatar)(({ theme }) => ({
   width: theme.spacing(4),

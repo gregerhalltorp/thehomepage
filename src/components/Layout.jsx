@@ -24,7 +24,7 @@ import Copyright from './Copyright';
 import Link from './Link';
 import globalTheme from '../styles/theme';
 
-import avatarImage from '../../files/images/profile.png';
+import avatarImage from '../assets/files/images/profile.png';
 
 const icons = {
   Hem: HomeIcon,

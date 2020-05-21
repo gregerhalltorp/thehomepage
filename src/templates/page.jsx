@@ -4,6 +4,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Typography, Link as ExternalLink } from '@material-ui/core';
 import { styled } from '@material-ui/core/styles';
+import Img from 'gatsby-image';
 
 import InternalLink from '../components/Link';
 import Layout from '../components/Layout';
@@ -15,6 +16,13 @@ export const query = graphql`
       body
       frontmatter {
         title
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800 maxHeight:450 cropFocus:NORTH) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
@@ -22,10 +30,8 @@ export const query = graphql`
 
 const Link = ({ href, ...rest }) => {
   if (href.match(/^http[s]?/)) {
-    console.log('matchy');
     return <ExternalLink href={href} {...rest} />;
   }
-  console.log('no matchy');
   return <InternalLink to={href} {...rest} />;
 };
 
@@ -56,9 +62,12 @@ const comps = {
 
 export default ({ data, location }) => {
   const page = data.mdx;
+  const featuredImgFluid = page.frontmatter.featuredImage.childImageSharp.fluid;
+
   return (
     <Layout location={location} title={page?.frontmatter.title}>
       <MainPaper>
+        <Img fluid={featuredImgFluid} />
         <MDXProvider components={comps}>
           <MDXRenderer>{page.body}</MDXRenderer>
         </MDXProvider>
